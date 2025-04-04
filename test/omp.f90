@@ -1,6 +1,6 @@
-program main
+program omp
 
-  use sum_kernel_mod, only: sum_kernel
+  use sum_kernel_mod, only: sum_kernel_threaded
 
   implicit none
   
@@ -14,7 +14,7 @@ program main
   call random_number(field)
 
   do t= 1, n_steps
-    call sum_kernel(field, field_sum)
+    call sum_kernel_threaded(field, field_sum)
   end do
 
-end program main
+end program omp

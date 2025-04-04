@@ -1,4 +1,4 @@
-program main
+program serial
 
   use sum_kernel_mod, only: sum_kernel
 
@@ -17,4 +17,4 @@ program main
     call sum_kernel(field, field_sum)
   end do
 
-end program main
+end program serial
