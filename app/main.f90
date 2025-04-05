@@ -1,6 +1,5 @@
 program main
 
-  use field_mod,      only: field_type
   use sum_kernel_mod, only: sum_kernel
 
   implicit none
@@ -10,7 +9,7 @@ program main
   integer :: n_steps, t
 
   n_steps = 1000
-  allocate(field(1000000))
+  allocate(field(10000000))
   call random_init(.true., .true.)
   call random_number(field)
 
