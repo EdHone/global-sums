@@ -1,8 +1,6 @@
 !!
 module sum_kernel_mod
 
-  use field_mod, only: field_type
-
   implicit none
 
 contains
