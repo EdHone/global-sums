@@ -40,7 +40,17 @@ contains
 
     type(field_type) :: local_field
 
-    integer(MPI_ADDRESS_KIND), allocatable :: snd_n(:), disp(:)
+    integer :: comm_rank, comm_size, ierr
+    integer :: snd_n, disp
+
+    call mpi_comm_rank(mpi_comm_world, comm_rank, ierr)
+    call mpi_comm_size(mpi_comm_world, comm_size, ierr)
+    snd_n = size(self%data) / comm_size
+    disp = comm_rank * snd_n
+
+    local_field = field_type(int(snd_n))
+    call MPI_Scatterv( self%data, [snd_n], [disp], MPI_DOUBLE, local_field%data, &
+                       snd_n, MPI_DOUBLE, 0, mpi_comm_world, ierr )
 
   end function scatter
 
