@@ -13,7 +13,7 @@ time fpm run
 
 To visualise the results of running the global sums with different thread counts, run the following commands:
 ```
-fpm install prefix=.
+fpm install --prefix=.
 cd plots
 python compare_threads.py
 ```
